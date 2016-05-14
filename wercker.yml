@@ -50,5 +50,3 @@ deploy:
         password: $DOCKER_PASSWORD
         tag: $WERCKER_GIT_COMMIT
         repository: rpaul80/go-hello-world
-        registry: https://registry.hub.docker.com
-
