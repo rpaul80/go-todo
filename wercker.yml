@@ -50,9 +50,10 @@ deploy:
         password: $DOCKER_PASSWORD
         tag: $WERCKER_GIT_COMMIT
         repository: rpaul80/go-hello-world
-    - script:
+    - create-file:
         name: Prepare kubeconfig
-        code: printf "$KUBE_CONFIG_PROD" > $WERCKER_OUTPUT_DIR/kubeconfig; cat $WERCKER_OUTPUT_DIR/kubeconfig
+        filename: $WERCKER_OUTPUT_DIR/kubeconfig
+        content: $KUBE_CONFIG_PROD
     - kubectl:
         raw-global-args: --kubeconfig=$WERCKER_OUTPUT_DIR/kubeconfig
         command: create -f deploy.yml
