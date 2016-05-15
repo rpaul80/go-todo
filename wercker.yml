@@ -52,7 +52,7 @@ deploy:
         repository: rpaul80/go-hello-world
     - script:
         name: Prepare kubeconfig
-        code: printf "$KUBE_CONFIG_PROD" > $WERCKER_OUTPUT_DIR/kubeconfig
+        code: printf "$KUBE_CONFIG_PROD" > $WERCKER_OUTPUT_DIR/kubeconfig; cat $WERCKER_OUTPUT_DIR/kubeconfig
     - kubectl:
         raw-global-args: --kubeconfig=$WERCKER_OUTPUT_DIR/kubeconfig
         command: create -f deploy.yml
